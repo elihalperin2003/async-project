@@ -45,10 +45,23 @@ const fsPromises = require("fs").promises;
 
 // 5
 
-fsPromises
-  .readFile("input.txt", "utf-8")
+// fsPromises
+//   .readFile("input.txt", "utf-8")
+//   .then((data) => {
+//     return fsPromises.writeFile("output-upper", data.toUpperCase());
+//   })
+//   .then(() => console.log("Everything ending successfully"))
+//   .catch(console.error);
+
+// bonus
+
+Promise.all([
+  fsPromises.readFile("input.txt", "utf8"),
+  fsPromises.readFile("output.txt", "utf8"),
+])
   .then((data) => {
-    return fsPromises.writeFile("output-upper", data.toUpperCase());
+    return console.log(
+      `input.txt - ${data[0].length}, output.txt - ${data[1].length}`,
+    );
   })
-  .then(() => console.log("Everything ending successfully"))
   .catch(console.error);
