@@ -1,4 +1,4 @@
-const fs = require("fs");
+// const fs = require("fs");
 
 // 1
 
@@ -21,15 +21,24 @@ const fs = require("fs");
 
 // 3
 
-fs.readFile("input.txt", "utf-8", (err, data) => {
-  if (err) {
-    return console.log(`Error while reading:\n ${err}`);
-  }
-  const dataUpper = data.toUpperCase();
-  fs.writeFile("output-upper.txt", dataUpper, (err) => {
-    if (err) {
-      return console.log(`Error while writing:\n ${err}`);
-    }
-    console.log("Everything ending successfully");
-  });
-});
+// fs.readFile("input.txt", "utf-8", (err, data) => {
+//   if (err) {
+//     return console.log(`Error while reading:\n ${err}`);
+//   }
+//   const dataUpper = data.toUpperCase();
+//   fs.writeFile("output-upper.txt", dataUpper, (err) => {
+//     if (err) {
+//       return console.log(`Error while writing:\n ${err}`);
+//     }
+//     console.log("Everything ending successfully");
+//   });
+// });
+
+// 4
+
+const fsPromises = require("fs").promises;
+
+fsPromises
+  .readFile("input.txt", "utf-8")
+  .then((data) => console.log(`reading with Promise:\n${data}`))
+  .catch(console.error);
