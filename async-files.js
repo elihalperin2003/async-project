@@ -11,10 +11,25 @@ const fs = require("fs");
 
 // 2
 
-const outputText = "writed successfully by Node.js";
-fs.writeFile("output.txt", outputText, (err) => {
+// const outputText = "writed successfully by Node.js";
+// fs.writeFile("output.txt", outputText, (err) => {
+//   if (err) {
+//     return console.log(`Error while writing:\n ${err}`);
+//   }
+//   return console.log("File writed successfully");
+// });
+
+// 3
+
+fs.readFile("input.txt", "utf-8", (err, data) => {
   if (err) {
     return console.log(`Error while reading:\n ${err}`);
   }
-  return console.log("File writed successfully");
+  const dataUpper = data.toUpperCase();
+  fs.writeFile("output-upper.txt", dataUpper, (err) => {
+    if (err) {
+      return console.log(`Error while writing:\n ${err}`);
+    }
+    console.log("Everything ending successfully");
+  });
 });
