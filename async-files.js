@@ -38,7 +38,17 @@
 
 const fsPromises = require("fs").promises;
 
+// fsPromises
+//   .readFile("input.txt", "utf-8")
+//   .then((data) => console.log(`reading with Promise:\n${data}`))
+//   .catch(console.error);
+
+// 5
+
 fsPromises
   .readFile("input.txt", "utf-8")
-  .then((data) => console.log(`reading with Promise:\n${data}`))
+  .then((data) => {
+    return fsPromises.writeFile("output-upper", data.toUpperCase());
+  })
+  .then(() => console.log("Everything ending successfully"))
   .catch(console.error);
