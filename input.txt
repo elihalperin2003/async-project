@@ -1,3 +1,0 @@
-Hello world
-this is my input
-node.js is cool
